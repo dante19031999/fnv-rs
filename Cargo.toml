@@ -13,6 +13,7 @@ categories = ["algorithms", "no-std"]
 [features]
 default = []
 std = []
+nightly = []
 
 [dependencies]
 # No dependencies needed for this implementation!

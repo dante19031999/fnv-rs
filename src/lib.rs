@@ -1,5 +1,7 @@
 #![cfg_attr(docsrs, feature(doc_auto_cfg))]
 #![cfg_attr(not(feature = "std"), no_std)]
+#![cfg_attr(docsrs, feature(doc_auto_cfg))]
+#![cfg_attr(feature = "nightly", feature(allocator_api))]
 
 //! [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](https://github.com/dante19031999/fnv-rs/tree/main?tab=Apache-2.0-1-ov-file#readme)
 //! [![No Std](https://img.shields.io/badge/no__std-compatible-success.svg)](#)
@@ -121,11 +123,14 @@
 //! This project is licensed under
 //! the [Apache-2.0 License](https://github.com/dante19031999/fnv-rs/tree/main?tab=Apache-2.0-1-ov-file#readme).
 
+pub mod collection;
 mod constants;
 mod fvn;
 mod fvn1a;
 pub mod collection;
 
+#[cfg(feature = "std")]
+pub use collection::*;
 pub use constants::*;
 pub use fvn::*;
 pub use fvn1a::*;
