@@ -1,3 +1,6 @@
+#![cfg_attr(docsrs, feature(doc_auto_cfg))]
+#![cfg_attr(not(feature = "std"), no_std)]
+
 //! [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](https://github.com/dante19031999/fnv-rs/tree/main?tab=Apache-2.0-1-ov-file#readme)
 //! [![No Std](https://img.shields.io/badge/no__std-compatible-success.svg)](#)
 //! [![Rust Version](https://img.shields.io/badge/rustc-1.56+-lightgray.svg?logo=rust)](https://blog.rust-lang.org/2021/10/21/Rust-1.56.0.html)
@@ -118,11 +121,10 @@
 //! This project is licensed under
 //! the [Apache-2.0 License](https://github.com/dante19031999/fnv-rs/tree/main?tab=Apache-2.0-1-ov-file#readme).
 
-#![no_std]
-
 mod constants;
 mod fvn;
 mod fvn1a;
+pub mod collection;
 
 pub use constants::*;
 pub use fvn::*;

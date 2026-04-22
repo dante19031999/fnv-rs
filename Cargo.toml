@@ -10,5 +10,13 @@ readme = "README.MD"
 keywords = ["hash", "fnv", "hasher", "performance"]
 categories = ["algorithms", "no-std"]
 
+[features]
+default = []
+std = []
+
 [dependencies]
 # No dependencies needed for this implementation!
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
