@@ -62,8 +62,8 @@
 //! ```rust
 //! use std::collections::HashMap;
 //! use fnv64_rs::FvnBuildHasher;
-//! 
-//! // Initialize a HashMap using the FNV-1a BuildHasher
+//!
+//! // Initialize a HashSet using the FNV-1a BuildHasher
 //! let mut map: HashMap<String, i32, FvnBuildHasher> = HashMap::default();
 //! 
 //! map.insert("apple".to_string(), 1);
