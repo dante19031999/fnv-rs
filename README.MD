@@ -56,6 +56,30 @@ map.insert("apple".to_string(), 1);
 map.insert("orange".to_string(), 2);
 
 assert_eq!(map.get("apple"), Some(&1));
+assert_eq!(map.get("orange"), Some(&2));
+assert_eq!(map.get("pineapple"), None);
+
+```
+
+## 🛠️ Using with HashSet
+
+The FNV algorithm is frequently used in hash sets because of its speed and low collision rate for short keys (like
+strings or integers).
+
+```rust
+use std::collections::HashMap;
+use fnv64_rs::FvnBuildHasher;
+
+// Initialize a HashMap using the FNV-1a BuildHasher
+let mut set: HashSet<String, FvnBuildHasher> = HashSet::default();
+
+set.insert("apple".to_string());
+set.insert("orange".to_string());
+
+assert!(set.contains("apple"));
+assert!(set.contains("orange"));
+assert!(!set.contains("pineapple"));
+
 ```
 
 ## 🛠️ Direct Hashing
