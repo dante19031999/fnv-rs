@@ -167,17 +167,23 @@
 
 pub mod collection;
 mod constants;
-mod fvn;
-mod fvn1a;
-pub mod collection;
+pub mod fvn1;
+pub mod fvn1a;
 
 #[cfg(feature = "std")]
 pub use collection::*;
 pub use constants::*;
-pub use fvn::*;
+pub use fvn1::*;
 pub use fvn1a::*;
 
-///! An alias for the default 64-bit FNV hasher.
+#[cfg(feature = "std")]
+#[doc(inline)]
+pub use collection::FvnHashMap;
+#[cfg(feature = "std")]
+#[doc(inline)]
+pub use collection::FvnHashSet;
+
+/// An alias for the default 64-bit FNV hasher.
 ///
 /// This currently points to [`Fvn1aHasher`], which is the recommended
 /// variant for most applications due to its superior bit-dispersion properties.
