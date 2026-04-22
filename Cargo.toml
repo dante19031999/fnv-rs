@@ -1,0 +1,14 @@
+[package]
+name = "fnv64-rs"
+version = "0.1.0"
+edition = "2021"
+authors = ["Dante Doménech Martínez <dante19031999@gmail.com>"]
+description = "A lightweight, zero-dependency implementation of the FNV (Fowler–Noll–Vo) hash function."
+license = "Apache-2.0"
+repository = "https://github.com/youruser/your-repo"
+readme = "README.md"
+keywords = ["hash", "fnv", "hasher", "performance"]
+categories = ["algorithms", "no-std"]
+
+[dependencies]
+# No dependencies needed for this implementation!
