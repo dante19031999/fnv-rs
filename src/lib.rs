@@ -165,23 +165,23 @@
 //! This project is licensed under
 //! the [Apache-2.0 License](https://github.com/dante19031999/fnv-rs/tree/main?tab=Apache-2.0-1-ov-file#readme).
 
-pub mod collection;
+pub mod collections;
 mod constants;
 pub mod fvn1;
 pub mod fvn1a;
 
 #[cfg(feature = "std")]
-pub use collection::*;
+pub use collections::*;
 pub use constants::*;
 pub use fvn1::*;
 pub use fvn1a::*;
 
 #[cfg(feature = "std")]
 #[doc(inline)]
-pub use collection::FvnHashMap;
+pub use collections::FvnHashMap;
 #[cfg(feature = "std")]
 #[doc(inline)]
-pub use collection::FvnHashSet;
+pub use collections::FvnHashSet;
 
 /// An alias for the default 64-bit FNV hasher.
 ///
