@@ -1,3 +1,29 @@
+//! 🦀 FNV-1 Hashing Implementation
+//!
+//! This module provides the **FNV-1** variant of the Fowler–Noll–Vo hash function.
+//!
+//! **Note: All types in this module are re-exported at the crate root.** You can use them
+//! via `fnv64_rs::*` instead of `fnv64_rs::fvn1::*`.
+//!
+//! ### 💡 Algorithm Logic
+//! The FNV-1 algorithm follows a **Multiply-then-XOR** sequence:
+//! 1. Start with the [`OFFSET_BASIS`][`crate::OFFSET`].
+//! 2. For each byte:
+//!    * Multiply the current hash by the [`FNV_PRIME`][`crate::PRIME`].
+//!    * XOR the result with the byte.
+//!
+//! ### 🛠️ Usage
+//! This module provides both the raw [`Fvn1Hasher`] and the [`Fvn1BuildHasher`] for use with collections.
+//!
+//! ```rust
+//! use core::hash::Hasher;
+//! use fnv64_rs::Fvn1Hasher;
+//!
+//! let mut hasher = Fvn1Hasher::default();
+//! hasher.write(b"Rust");
+//! let result = hasher.finish();
+//! ```
+
 use core::hash::{BuildHasher, Hasher};
 
 /// A generic implementation of the FNV-1 (Fowler–Noll–Vo) hashing algorithm.
