@@ -6,7 +6,7 @@ authors = ["Dante Doménech Martínez <dante19031999@gmail.com>"]
 description = "A lightweight, zero-dependency implementation of the FNV (Fowler–Noll–Vo) hash function."
 license = "Apache-2.0"
 repository = "https://github.com/youruser/your-repo"
-readme = "README.md"
+readme = "README.MD"
 keywords = ["hash", "fnv", "hasher", "performance"]
 categories = ["algorithms", "no-std"]
 
