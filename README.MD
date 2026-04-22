@@ -97,6 +97,45 @@ let result = hasher.finish();
 println!("Hash: {:x}", result);
 ```
 
+## 📦 Collections (Standard Library)
+
+[![Feature: std](https://img.shields.io/badge/feature-std-yellow.svg)](https://doc.rust-lang.org/std/)
+
+When the std feature is enabled, fnv64-rs provides convenient type aliases for standard library collections. These are
+pre-configured with FNV hashers and re-exported at the crate root for a seamless developer experience.
+
+### Available Aliases
+
+| Type                 | Hash Algorithm       | Collection |
+|:---------------------|:---------------------|:-----------|
+| `FvnHashMap<K, V>`   | **FNV-1a** (Default) | `HashMap`  |
+| `FvnHashSet<V>`      | **FNV-1a** (Default) | `HashSet`  |
+| `Fvn1aHashMap<K, V>` | **FNV-1a**           | `HashMap`  |
+| `Fvn1aHashSet<V>`    | **FNV-1a**           | `HashSet`  |
+| `Fvn1HashMap<K, V>`  | **FNV-1**            | `HashMap`  |
+| `Fvn1HashSet<V>`     | **FNV-1**            | `HashSet`  |
+| `Fvn0HashMap<K, V>`  | **FNV-0**            | `HashMap`  |
+| `Fvn0HashSet<V>`     | **FNV-0**            | `HashSet`  |
+
+> [!TIP]
+> On **Nightly Rust**, these aliases also support the **Allocator API**, allowing you to use FNV collections with custom
+> memory allocators. Use `--features nightly` to enable this.
+
+### 🛠️ Example: Drop-in Replacement
+
+You can use these aliases directly without needing to manually import or configure a BuildHasher:
+
+```rust
+use fnv64_rs::{FvnHashMap, FvnHashSet};
+
+// No complex generic boilerplate needed!
+let mut map = FvnHashMap::default();
+map.insert("id_01", 100);
+
+let mut set = FvnHashSet::default();
+set.insert("admin");
+```
+
 ## 📊 Algorithm Variants
 
 | Variant     | Implementation          | Logic                   | Characteristics                                    |
