@@ -70,7 +70,7 @@ strings or integers).
 use std::collections::HashMap;
 use fnv64_rs::FvnBuildHasher;
 
-// Initialize a HashMap using the FNV-1a BuildHasher
+// Initialize a HashSet using the FNV-1a BuildHasher
 let mut set: HashSet<String, FvnBuildHasher> = HashSet::default();
 
 set.insert("apple".to_string());
