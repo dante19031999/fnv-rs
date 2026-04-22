@@ -179,19 +179,21 @@ pub use fvn1a::*;
 
 ///! An alias for the default 64-bit FNV hasher.
 ///
-///! This currently points to [`Fvn1aHasher`], which is the recommended
-///! variant for most applications due to its superior bit-dispersion properties.
+/// This currently points to [`Fvn1aHasher`], which is the recommended
+/// variant for most applications due to its superior bit-dispersion properties.
+#[doc(inline)]
 pub use fvn1a::Fvn1aHasher as FvnHasher;
 
-///! An alias for the default 64-bit FNV build hasher.
+/// An alias for the default 64-bit FNV build hasher.
 ///
-///! This provides a convenient way to use FNV with standard library collections:
+/// This provides a convenient way to use FNV with standard library collections:
 ///
-///! ```rust
-///! use std::collections::HashMap;
-///! use fnv64_rs::FvnBuildHasher;
+/// ```rust
+/// use std::collections::HashMap;
+/// use fnv64_rs::FvnBuildHasher;
 ///
-///! let mut map: HashMap<String, i32, FvnBuildHasher> = HashMap::default();
-///! map.insert("apple".to_string(), 1);
-///! ```
+/// let mut map: HashMap<String, i32, FvnBuildHasher> = HashMap::default();
+/// map.insert("apple".to_string(), 1);
+/// ```
+#[doc(inline)]
 pub use fvn1a::Fvn1aBuildHasher as FvnBuildHasher;
