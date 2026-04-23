@@ -1,6 +1,5 @@
-#![cfg_attr(docsrs, feature(doc_auto_cfg))]
+#![cfg_attr(docsrs, feature(doc_cfg))]
 #![cfg_attr(not(feature = "std"), no_std)]
-#![cfg_attr(docsrs, feature(doc_auto_cfg))]
 #![cfg_attr(feature = "nightly", feature(allocator_api))]
 
 //! [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](https://github.com/dante19031999/fnv-rs/tree/main?tab=Apache-2.0-1-ov-file#readme)
