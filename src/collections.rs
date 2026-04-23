@@ -1,4 +1,5 @@
 #![cfg(feature = "std")]
+#![cfg_attr(docsrs, doc(cfg(feature = "std")))]
 //! 📦 Standard Collection Aliases
 //!
 //! This module provides type aliases for [`HashMap`] and [`HashSet`] using various FNV hashing variants.
@@ -18,6 +19,7 @@ use std::alloc::{Allocator, Global};
 /// A [`HashMap`] using the **FNV-0** algorithm.
 pub type Fnv0HashMap<K, V> = HashMap<K, V, Fnv0BuildHasher>;
 #[cfg(feature = "nightly")]
+#[cfg_attr(docsrs, doc(cfg(feature = "nightly")))]
 /// A [`HashMap`] using the **FNV-0** algorithm with support for custom allocators.
 pub type Fnv0HashMap<K, V, A = Global> = HashMap<K, V, Fnv0BuildHasher, A>;
 
@@ -25,6 +27,7 @@ pub type Fnv0HashMap<K, V, A = Global> = HashMap<K, V, Fnv0BuildHasher, A>;
 /// A [`HashMap`] using the **FNV-1** algorithm.
 pub type Fnv1HashMap<K, V> = HashMap<K, V, Fnv1BuildHasher>;
 #[cfg(feature = "nightly")]
+#[cfg_attr(docsrs, doc(cfg(feature = "nightly")))]
 /// A [`HashMap`] using the **FNV-1** algorithm with support for custom allocators.
 pub type Fnv1HashMap<K, V, A = Global> = HashMap<K, V, Fnv1BuildHasher, A>;
 
@@ -32,6 +35,7 @@ pub type Fnv1HashMap<K, V, A = Global> = HashMap<K, V, Fnv1BuildHasher, A>;
 /// A [`HashMap`] using the **FNV-1a** algorithm.
 pub type Fnv1aHashMap<K, V> = HashMap<K, V, Fnv1aBuildHasher>;
 #[cfg(feature = "nightly")]
+#[cfg_attr(docsrs, doc(cfg(feature = "nightly")))]
 /// A [`HashMap`] using the **FNV-1a** algorithm with support for custom allocators.
 pub type Fnv1aHashMap<K, V, A = Global> = HashMap<K, V, Fnv1aBuildHasher, A>;
 
@@ -39,6 +43,7 @@ pub type Fnv1aHashMap<K, V, A = Global> = HashMap<K, V, Fnv1aBuildHasher, A>;
 /// A [`HashMap`] using the **default** FNV implementation (aliases **FNV-1a**).
 pub type FnvHashMap<K, V> = HashMap<K, V, FnvBuildHasher>;
 #[cfg(feature = "nightly")]
+#[cfg_attr(docsrs, doc(cfg(feature = "nightly")))]
 /// A [`HashMap`] using the **default** FNV implementation with support for custom allocators.
 pub type FnvHashMap<K, V, A = Global> = HashMap<K, V, FnvBuildHasher, A>;
 
@@ -48,6 +53,7 @@ pub type FnvHashMap<K, V, A = Global> = HashMap<K, V, FnvBuildHasher, A>;
 /// A [`HashSet`] using the **FNV-0** algorithm.
 pub type Fnv0HashSet<V> = HashSet<V, Fnv0BuildHasher>;
 #[cfg(feature = "nightly")]
+#[cfg_attr(docsrs, doc(cfg(feature = "nightly")))]
 /// A [`HashSet`] using the **FNV-0** algorithm with support for custom allocators.
 pub type Fnv0HashSet<V, A = Global> = HashSet<V, Fnv0BuildHasher, A>;
 
@@ -55,6 +61,7 @@ pub type Fnv0HashSet<V, A = Global> = HashSet<V, Fnv0BuildHasher, A>;
 /// A [`HashSet`] using the **FNV-1** algorithm.
 pub type Fnv1HashSet<V> = HashSet<V, Fnv1BuildHasher>;
 #[cfg(feature = "nightly")]
+#[cfg_attr(docsrs, doc(cfg(feature = "nightly")))]
 /// A [`HashSet`] using the **FNV-1** algorithm with support for custom allocators.
 pub type Fnv1HashSet<V, A = Global> = HashSet<V, Fnv1BuildHasher, A>;
 
@@ -62,6 +69,7 @@ pub type Fnv1HashSet<V, A = Global> = HashSet<V, Fnv1BuildHasher, A>;
 /// A [`HashSet`] using the **FNV-1a** algorithm.
 pub type Fnv1aHashSet<V> = HashSet<V, Fnv1aBuildHasher>;
 #[cfg(feature = "nightly")]
+#[cfg_attr(docsrs, doc(cfg(feature = "nightly")))]
 /// A [`HashSet`] using the **FNV-1a** algorithm with support for custom allocators.
 pub type Fnv1aHashSet<V, A = Global> = HashSet<V, Fnv1aBuildHasher, A>;
 
@@ -69,5 +77,6 @@ pub type Fnv1aHashSet<V, A = Global> = HashSet<V, Fnv1aBuildHasher, A>;
 /// A [`HashSet`] using the **default** FNV implementation (aliases **FNV-1a**).
 pub type FnvHashSet<V> = HashSet<V, FnvBuildHasher>;
 #[cfg(feature = "nightly")]
+#[cfg_attr(docsrs, doc(cfg(feature = "nightly")))]
 /// A [`HashSet`] using the **default** FNV implementation with support for custom allocators.
 pub type FnvHashSet<V, A = Global> = HashSet<V, FnvBuildHasher, A>;
