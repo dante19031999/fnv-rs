@@ -176,9 +176,11 @@ pub use fnv1::*;
 pub use fnv1a::*;
 
 #[cfg(feature = "std")]
+#[cfg_attr(docsrs, doc(cfg(feature = "std")))]
 #[doc(inline)]
 pub use collections::FnvHashMap;
 #[cfg(feature = "std")]
+#[cfg_attr(docsrs, doc(cfg(feature = "std")))]
 #[doc(inline)]
 pub use collections::FnvHashSet;
 
@@ -187,8 +189,6 @@ pub use collections::FnvHashSet;
 /// This currently points to [`Fnv1aHasher`], which is the recommended
 /// variant for most applications due to its superior bit-dispersion properties.
 #[doc(inline)]
-#[cfg(feature = "std")]
-#[cfg_attr(docsrs, doc(cfg(feature = "std")))]
 pub use fnv1a::Fnv1aHasher as FnvHasher;
 
 /// An alias for the default 64-bit FNV build hasher.
@@ -203,6 +203,4 @@ pub use fnv1a::Fnv1aHasher as FnvHasher;
 /// map.insert("apple".to_string(), 1);
 /// ```
 #[doc(inline)]
-#[cfg(feature = "std")]
-#[cfg_attr(docsrs, doc(cfg(feature = "std")))]
 pub use fnv1a::Fnv1aBuildHasher as FnvBuildHasher;
