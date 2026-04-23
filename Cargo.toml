@@ -1,6 +1,6 @@
 [package]
 name = "fnv64-rs"
-version = "0.2.1"
+version = "0.2.2"
 edition = "2021"
 authors = ["Dante Doménech Martínez <dante19031999@gmail.com>"]
 description = "A lightweight, zero-dependency implementation of the FNV (Fowler–Noll–Vo) hash function."
@@ -11,8 +11,11 @@ keywords = ["hash", "fnv", "hasher", "performance"]
 categories = ["algorithms", "no-std"]
 
 [features]
+# Default features (none). Activate `std` to use typedefs over the standard library.
 default = []
+# Enables standard library (std) support.
 std = []
+# Enables unstable 'nightly' features. Use with caution.
 nightly = []
 
 [dependencies]
@@ -21,3 +24,8 @@ nightly = []
 [package.metadata.docs.rs]
 all-features = true
 rustdoc-args = ["--cfg", "docsrs"]
+
+[package.metadata.docs.rs.features]
+default = "Default features (none). Activate `std` feature to use typedefs over the standard library."
+std = "Enables standard library (std) support."
+nightly = "Enables unstable 'nightly' features. Use with caution."
