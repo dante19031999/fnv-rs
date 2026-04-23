@@ -17,7 +17,7 @@
 //! FNV hashes are designed to be fast while maintaining a low collision rate,
 //! making them ideal for use in lookup tables and hash maps.
 //!
-//! # 🦀 FVN64-RS
+//! # 🦀 FNV64-RS
 //!
 //! A lightweight, zero-dependency, `no_std` implementation of the 64-bit **Fowler–Noll–Vo (FNV)** non-cryptographic hash
 //! function in Rust.
@@ -60,10 +60,10 @@
 //!
 //! ```rust
 //! use std::collections::HashMap;
-//! use fnv64_rs::FvnBuildHasher;
+//! use fnv64_rs::FnvBuildHasher;
 //!
 //! // Initialize a HashSet using the FNV-1a BuildHasher
-//! let mut map: HashMap<String, i32, FvnBuildHasher> = HashMap::default();
+//! let mut map: HashMap<String, i32, FnvBuildHasher> = HashMap::default();
 //!
 //! map.insert("apple".to_string(), 1);
 //! map.insert("orange".to_string(), 2);
@@ -80,10 +80,10 @@
 //!
 //! ```rust
 //! use std::collections::HashSet;
-//! use fnv64_rs::FvnBuildHasher;
+//! use fnv64_rs::FnvBuildHasher;
 //!
 //! // Initialize a HashMap using the FNV-1a BuildHasher
-//! let mut set: HashSet<String, FvnBuildHasher> = HashSet::default();
+//! let mut set: HashSet<String, FnvBuildHasher> = HashSet::default();
 //!
 //! set.insert("apple".to_string());
 //! set.insert("orange".to_string());
@@ -99,9 +99,9 @@
 //!
 //! ```rust
 //! use core::hash::Hasher;
-//! use fnv64_rs::Fvn1aHasher;
+//! use fnv64_rs::Fnv1aHasher;
 //!
-//! let mut hasher = Fvn1aHasher::default();
+//! let mut hasher = Fnv1aHasher::default();
 //! hasher.write(b"hello world");
 //! let result = hasher.finish();
 //!
@@ -119,14 +119,14 @@
 //!
 //! | Type                 | Hash Algorithm       | Collection |
 //! |:---------------------|:---------------------|:-----------|
-//! | [`FvnHashMap<K, V>`]   | **FNV-1a** (Default) | [`HashMap`][std::collections::HashMap]  |
-//! | [`FvnHashSet<V>`]      | **FNV-1a** (Default) | [`HashSet`][std::collections::HashSet]  |
-//! | [`Fvn1aHashMap<K, V>`] | **FNV-1a**           | [`HashMap`][std::collections::HashMap]  |
-//! | [`Fvn1aHashSet<V>`]    | **FNV-1a**           | [`HashSet`][std::collections::HashSet]  |
-//! | [`Fvn1HashMap<K, V>`]  | **FNV-1**            | [`HashMap`][std::collections::HashMap]  |
-//! | [`Fvn1HashSet<V>`]     | **FNV-1**            | [`HashSet`][std::collections::HashSet]  |
-//! | [`Fvn0HashMap<K, V>`]  | **FNV-0**            | [`HashMap`][std::collections::HashMap]  |
-//! | [`Fvn0HashSet<V>`]     | **FNV-0**            | [`HashSet`][std::collections::HashSet]  |
+//! | [`FnvHashMap<K, V>`]   | **FNV-1a** (Default) | [`HashMap`][std::collections::HashMap]  |
+//! | [`FnvHashSet<V>`]      | **FNV-1a** (Default) | [`HashSet`][std::collections::HashSet]  |
+//! | [`Fnv1aHashMap<K, V>`] | **FNV-1a**           | [`HashMap`][std::collections::HashMap]  |
+//! | [`Fnv1aHashSet<V>`]    | **FNV-1a**           | [`HashSet`][std::collections::HashSet]  |
+//! | [`Fnv1HashMap<K, V>`]  | **FNV-1**            | [`HashMap`][std::collections::HashMap]  |
+//! | [`Fnv1HashSet<V>`]     | **FNV-1**            | [`HashSet`][std::collections::HashSet]  |
+//! | [`Fnv0HashMap<K, V>`]  | **FNV-0**            | [`HashMap`][std::collections::HashMap]  |
+//! | [`Fnv0HashSet<V>`]     | **FNV-0**            | [`HashSet`][std::collections::HashSet]  |
 //!
 //! > [!TIP]
 //! > On **Nightly Rust**, these aliases also support the **Allocator API**, allowing you to use FNV collections with custom
@@ -139,13 +139,13 @@
 //! ```rust
 //! # #[cfg(feature = "std")]
 //! # {
-//! use fnv64_rs::{FvnHashMap, FvnHashSet};
+//! use fnv64_rs::{FnvHashMap, FnvHashSet};
 //!
 //! // No complex generic boilerplate needed!
-//! let mut map = FvnHashMap::default();
+//! let mut map = FnvHashMap::default();
 //! map.insert("id_01", 100);
 //!
-//! let mut set = FvnHashSet::default();
+//! let mut set = FnvHashSet::default();
 //! set.insert("admin");
 //! # }
 //! ```
@@ -154,10 +154,10 @@
 //!
 //! | Variant     | Implementation          | Logic                   | Characteristics                                    |
 //! |:------------|:------------------------|:------------------------|:---------------------------------------------------|
-//! | **FNV-1a**  | `fvn64_rs::Fvn1aHasher` | `(hash ^ byte) * PRIME` | **Recommended.** Best avalanche characteristics.   |
-//! | **FNV-1**   | `fvn64_rs::Fvn1Hasher`  | `(hash * PRIME) ^ byte` | The original FNV-1 specification.                  |
-//! | **FNV-0**   | `fvn64_rs::Fvn0Hasher`  | `hash = 0; ...`         | Deprecated. Included for historical purposes.      |
-//! | **DEFAULT** | `fvn64_rs::FvnHasher`   | `(hash ^ byte) * PRIME` | **Default** implementation. Implements **FNV-1a**. |
+//! | **FNV-1a**  | `fnv64_rs::Fnv1aHasher` | `(hash ^ byte) * PRIME` | **Recommended.** Best avalanche characteristics.   |
+//! | **FNV-1**   | `fnv64_rs::Fnv1Hasher`  | `(hash * PRIME) ^ byte` | The original FNV-1 specification.                  |
+//! | **FNV-0**   | `fnv64_rs::Fnv0Hasher`  | `hash = 0; ...`         | Deprecated. Included for historical purposes.      |
+//! | **DEFAULT** | `fnv64_rs::FnvHasher`   | `(hash ^ byte) * PRIME` | **Default** implementation. Implements **FNV-1a**. |
 //!
 //! ## ⚖️ License
 //!
@@ -166,28 +166,28 @@
 
 pub mod collections;
 mod constants;
-pub mod fvn1;
-pub mod fvn1a;
+pub mod fnv1;
+pub mod fnv1a;
 
 #[cfg(feature = "std")]
 pub use collections::*;
 pub use constants::*;
-pub use fvn1::*;
-pub use fvn1a::*;
+pub use fnv1::*;
+pub use fnv1a::*;
 
 #[cfg(feature = "std")]
 #[doc(inline)]
-pub use collections::FvnHashMap;
+pub use collections::FnvHashMap;
 #[cfg(feature = "std")]
 #[doc(inline)]
-pub use collections::FvnHashSet;
+pub use collections::FnvHashSet;
 
 /// An alias for the default 64-bit FNV hasher.
 ///
-/// This currently points to [`Fvn1aHasher`], which is the recommended
+/// This currently points to [`Fnv1aHasher`], which is the recommended
 /// variant for most applications due to its superior bit-dispersion properties.
 #[doc(inline)]
-pub use fvn1a::Fvn1aHasher as FvnHasher;
+pub use fnv1a::Fnv1aHasher as FnvHasher;
 
 /// An alias for the default 64-bit FNV build hasher.
 ///
@@ -195,10 +195,10 @@ pub use fvn1a::Fvn1aHasher as FvnHasher;
 ///
 /// ```rust
 /// use std::collections::HashMap;
-/// use fnv64_rs::FvnBuildHasher;
+/// use fnv64_rs::FnvBuildHasher;
 ///
-/// let mut map: HashMap<String, i32, FvnBuildHasher> = HashMap::default();
+/// let mut map: HashMap<String, i32, FnvBuildHasher> = HashMap::default();
 /// map.insert("apple".to_string(), 1);
 /// ```
 #[doc(inline)]
-pub use fvn1a::Fvn1aBuildHasher as FvnBuildHasher;
+pub use fnv1a::Fnv1aBuildHasher as FnvBuildHasher;

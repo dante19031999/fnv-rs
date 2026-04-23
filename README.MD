@@ -4,7 +4,7 @@
 [![Cargo Version](https://img.shields.io/crates/v/fnv64-rs.svg)](https://crates.io/crates/fnv64-rs)
 [![Documentation](https://docs.rs/fnv64-rs/badge.svg)](https://docs.rs/fnv64-rs)
 
-# 🦀 FVN64-RS
+# 🦀 FNV64-RS
 
 A lightweight, zero-dependency, `no_std` implementation of the 64-bit **Fowler–Noll–Vo (FNV)** non-cryptographic hash
 function in Rust.
@@ -47,10 +47,10 @@ strings or integers).
 
 ```rust
 use std::collections::HashMap;
-use fnv64_rs::FvnBuildHasher;
+use fnv64_rs::FnvBuildHasher;
 
 // Initialize a HashMap using the FNV-1a BuildHasher
-let mut map: HashMap<String, i32, FvnBuildHasher> = HashMap::default();
+let mut map: HashMap<String, i32, FnvBuildHasher> = HashMap::default();
 
 map.insert("apple".to_string(), 1);
 map.insert("orange".to_string(), 2);
@@ -68,10 +68,10 @@ strings or integers).
 
 ```rust
 use std::collections::HashMap;
-use fnv64_rs::FvnBuildHasher;
+use fnv64_rs::FnvBuildHasher;
 
 // Initialize a HashSet using the FNV-1a BuildHasher
-let mut set: HashSet<String, FvnBuildHasher> = HashSet::default();
+let mut set: HashSet<String, FnvBuildHasher> = HashSet::default();
 
 set.insert("apple".to_string());
 set.insert("orange".to_string());
@@ -88,9 +88,9 @@ You can use the hasher directly to compute values for specific data:
 
 ```rust
 use core::hash::Hasher;
-use fnv64_rs::Fvn1aHasher;
+use fnv64_rs::Fnv1aHasher;
 
-let mut hasher = Fvn1aHasher::default();
+let mut hasher = Fnv1aHasher::default();
 hasher.write(b"hello world");
 let result = hasher.finish();
 
@@ -108,14 +108,14 @@ pre-configured with FNV hashers and re-exported at the crate root for a seamless
 
 | Type                 | Hash Algorithm       | Collection |
 |:---------------------|:---------------------|:-----------|
-| `FvnHashMap<K, V>`   | **FNV-1a** (Default) | `HashMap`  |
-| `FvnHashSet<V>`      | **FNV-1a** (Default) | `HashSet`  |
-| `Fvn1aHashMap<K, V>` | **FNV-1a**           | `HashMap`  |
-| `Fvn1aHashSet<V>`    | **FNV-1a**           | `HashSet`  |
-| `Fvn1HashMap<K, V>`  | **FNV-1**            | `HashMap`  |
-| `Fvn1HashSet<V>`     | **FNV-1**            | `HashSet`  |
-| `Fvn0HashMap<K, V>`  | **FNV-0**            | `HashMap`  |
-| `Fvn0HashSet<V>`     | **FNV-0**            | `HashSet`  |
+| `FnvHashMap<K, V>`   | **FNV-1a** (Default) | `HashMap`  |
+| `FnvHashSet<V>`      | **FNV-1a** (Default) | `HashSet`  |
+| `Fnv1aHashMap<K, V>` | **FNV-1a**           | `HashMap`  |
+| `Fnv1aHashSet<V>`    | **FNV-1a**           | `HashSet`  |
+| `Fnv1HashMap<K, V>`  | **FNV-1**            | `HashMap`  |
+| `Fnv1HashSet<V>`     | **FNV-1**            | `HashSet`  |
+| `Fnv0HashMap<K, V>`  | **FNV-0**            | `HashMap`  |
+| `Fnv0HashSet<V>`     | **FNV-0**            | `HashSet`  |
 
 > [!TIP]
 > On **Nightly Rust**, these aliases also support the **Allocator API**, allowing you to use FNV collections with custom
@@ -126,13 +126,13 @@ pre-configured with FNV hashers and re-exported at the crate root for a seamless
 You can use these aliases directly without needing to manually import or configure a BuildHasher:
 
 ```rust
-use fnv64_rs::{FvnHashMap, FvnHashSet};
+use fnv64_rs::{FnvHashMap, FnvHashSet};
 
 // No complex generic boilerplate needed!
-let mut map = FvnHashMap::default();
+let mut map = FnvHashMap::default();
 map.insert("id_01", 100);
 
-let mut set = FvnHashSet::default();
+let mut set = FnvHashSet::default();
 set.insert("admin");
 ```
 
@@ -140,10 +140,10 @@ set.insert("admin");
 
 | Variant     | Implementation          | Logic                   | Characteristics                                    |
 |:------------|:------------------------|:------------------------|:---------------------------------------------------|
-| **FNV-1a**  | `fvn64_rs::Fvn1aHasher` | `(hash ^ byte) * PRIME` | **Recommended.** Best avalanche characteristics.   |
-| **FNV-1**   | `fvn64_rs::Fvn1Hasher`  | `(hash * PRIME) ^ byte` | The original FNV-1 specification.                  |
-| **FNV-0**   | `fvn64_rs::Fvn0Hasher`  | `hash = 0; ...`         | Deprecated. Included for historical purposes.      |
-| **DEFAULT** | `fvn64_rs::FvnHasher`   | `(hash ^ byte) * PRIME` | **Default** implementation. Implements **FNV-1a**. |
+| **FNV-1a**  | `fnv64_rs::Fnv1aHasher` | `(hash ^ byte) * PRIME` | **Recommended.** Best avalanche characteristics.   |
+| **FNV-1**   | `fnv64_rs::Fnv1Hasher`  | `(hash * PRIME) ^ byte` | The original FNV-1 specification.                  |
+| **FNV-0**   | `fnv64_rs::Fnv0Hasher`  | `hash = 0; ...`         | Deprecated. Included for historical purposes.      |
+| **DEFAULT** | `fnv64_rs::FnvHasher`   | `(hash ^ byte) * PRIME` | **Default** implementation. Implements **FNV-1a**. |
 
 ## ⚖️ License
 
