@@ -24,6 +24,8 @@
 //! let result = hasher.finish();
 //! ```
 
+use core::clone::Clone;
+use core::fmt::Debug;
 use core::hash::{BuildHasher, Hasher};
 
 /// A generic implementation of the FNV-1 (Fowler–Noll–Vo) hashing algorithm.
@@ -31,6 +33,7 @@ use core::hash::{BuildHasher, Hasher};
 /// This struct uses const generics for the `OFFSET` and `PRIME` to allow
 /// support for different bit-widths or custom variants while maintaining
 /// zero-cost abstractions.
+#[derive(Clone, Debug)]
 pub struct GenericFnv1Hasher<const OFFSET: u64, const PRIME: u64> {
     hash: u64,
 }
@@ -61,6 +64,7 @@ impl<const OFFSET: u64, const PRIME: u64> Default for GenericFnv1Hasher<OFFSET, 
 }
 
 /// A builder for creating [`GenericFnv1Hasher`] instances with specific parameters.
+#[derive(Clone, Debug)]
 pub struct GenericFnv1BuildHasher<const OFFSET: u64, const PRIME: u64> {}
 
 impl<const OFFSET: u64, const PRIME: u64> BuildHasher for GenericFnv1BuildHasher<OFFSET, PRIME> {

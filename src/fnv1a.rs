@@ -34,6 +34,7 @@ use core::hash::{BuildHasher, Hasher};
 /// FNV-1a is a variation of the FNV-1 algorithm that changes the order of the
 /// XOR and multiplication steps. This usually results in better "avalanche"
 /// characteristics for short strings.
+#[derive(Clone, Debug)]
 pub struct GenericFnv1aHasher<const OFFSET: u64, const PRIME: u64> {
     hash: u64,
 }
@@ -70,6 +71,7 @@ impl<const OFFSET: u64, const PRIME: u64> Default for GenericFnv1aHasher<OFFSET,
 ///
 /// This is useful for integrating with collections like `HashMap` or `HashSet`
 /// that require a `BuildHasher` to initialize their internal hashing state.
+#[derive(Clone, Debug)]
 pub struct GenericFnv1aBuildHasher<const OFFSET: u64, const PRIME: u64> {}
 
 impl<const OFFSET: u64, const PRIME: u64> BuildHasher for GenericFnv1aBuildHasher<OFFSET, PRIME> {
